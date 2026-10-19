@@ -1,0 +1,1378 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090a08">
+<title>FF ARENA | The Golden Standard</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #090a08;
+  --surface: #11120f;
+  --surface2: #171812;
+  --gold: #c8a65b;
+  --gold-light: #f0d99a;
+  --text: #f4f0e6;
+  --muted: #a7a596;
+  --line: rgba(200,166,91,.25);
+  --green: #a9b88a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Noto Sans Bengali", sans-serif;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button, a, select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--gold);
+  color: #090a08;
+}
+
+/* NAVIGATION */
+
+.navbar {
+  height: 76px;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(9,10,8,.94);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: Cinzel, serif;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.brand span {
+  color: var(--gold);
+}
+
+.brand small {
+  display: block;
+  font-family: Inter, sans-serif;
+  font-size: 8px;
+  letter-spacing: 5px;
+  color: var(--muted);
+  margin-top: -5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #d4d0c5;
+  font-size: 12px;
+  transition: color .2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold-light);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box {
+  width: 165px;
+  padding: 9px 12px;
+  background: #14150f;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--text);
+  outline: none;
+  font-size: 12px;
+}
+
+.search-box:focus {
+  border-color: var(--gold);
+}
+
+.menu-btn {
+  display: none;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--line);
+  padding: 7px 11px;
+  font-size: 20px;
+}
+
+/* BUTTONS */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 19px;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  background: var(--gold);
+  color: #141108;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  transition: .25s;
+}
+
+.btn:hover {
+  background: var(--gold-light);
+  box-shadow: 0 0 28px #c8a65b25;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold-light);
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: #141108;
+}
+
+.btn-small {
+  padding: 8px 12px;
+  font-size: 10px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  min-height: 490px;
+  display: flex;
+  align-items: center;
+  padding: 70px 7%;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, #090a08 0%, #090a08f0 30%, #090a0870 67%, #090a0850 100%),
+    linear-gradient(0deg, #090a08 0%, transparent 35%),
+    url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=85")
+    center 45% / cover;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 40%, #c8a65b0b 65%, transparent);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 660px;
+  position: relative;
+  z-index: 1;
+  animation: rise .8s ease both;
+}
+
+.eyebrow {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: Cinzel, Georgia, serif;
+  font-size: clamp(40px, 6.5vw, 77px);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 18px 0;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--gold);
+}
+
+.hero p {
+  max-width: 470px;
+  color: #c4c0b4;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero-note {
+  margin-top: 35px;
+  color: #999586;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* SECTIONS */
+
+.section {
+  padding: 54px 6%;
+}
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.kicker {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: Cinzel, Georgia, serif;
+  font-size: clamp(23px, 3vw, 32px);
+  margin-top: 5px;
+  font-weight: 700;
+}
+
+.section-title span {
+  color: var(--gold);
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* FEATURE CARDS */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap: 15px;
+}
+
+.card {
+  min-width: 0;
+  background: linear-gradient(145deg, #171812, #0d0e0b);
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  transition: border-color .3s, transform .3s;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+}
+
+.card-image {
+  height: 145px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #11120f 0%, transparent 85%);
+}
+
+.card-body {
+  padding: 17px;
+  margin-top: -10px;
+  position: relative;
+}
+
+.card-icon {
+  color: var(--gold);
+  font-size: 25px;
+  margin-bottom: 9px;
+}
+
+.card h3 {
+  font-size: 13px;
+  letter-spacing: .7px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+  margin-top: 7px;
+  min-height: 39px;
+}
+
+.card-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #ffffff0c;
+  color: var(--gold-light);
+  font-size: 10px;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr .82fr;
+  gap: 18px;
+  padding-top: 0;
+}
+
+.panel {
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: linear-gradient(150deg, #151610, #0c0d0a);
+  padding: 23px;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding-bottom: 17px;
+  margin-bottom: 17px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-symbol {
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.panel-head h3 {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.panel-head p {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.field {
+  margin: 15px 0;
+}
+
+.field label {
+  display: block;
+  color: #c9c4b7;
+  font-size: 11px;
+  margin-bottom: 7px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #37372c;
+  border-radius: 2px;
+  color: var(--text);
+  background: #0a0b08;
+  font-size: 12px;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+.field select option {
+  background: #11120f;
+}
+
+.full {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.result {
+  display: none;
+  margin-top: 20px;
+  padding: 16px;
+  background: #080905;
+  border: 1px solid var(--line);
+}
+
+.result.visible {
+  display: block;
+  animation: rise .3s ease;
+}
+
+.result h4 {
+  color: var(--gold-light);
+  font-family: Cinzel, Georgia, serif;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #ffffff0b;
+  font-size: 11px;
+}
+
+.setting-row strong {
+  color: var(--gold-light);
+}
+
+.result-note {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 12px;
+  line-height: 1.8;
+}
+
+.updates {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.update-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ffffff10;
+}
+
+.update-item:first-child { padding-top: 0; }
+.update-item:last-child { border-bottom: 0; }
+
+.update-number {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: grid;
+  place-items: center;
+  background: #262318;
+  color: var(--gold);
+  border: 1px solid var(--line);
+  font-family: Cinzel, serif;
+}
+
+.update-item h4 {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.update-item p {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+  margin-top: 3px;
+}
+
+.tip-list {
+  list-style: none;
+  counter-reset: tips;
+}
+
+.tip-list li {
+  counter-increment: tips;
+  display: flex;
+  align-items: start;
+  gap: 11px;
+  margin: 14px 0;
+  font-size: 11px;
+  color: #c7c3b7;
+  line-height: 1.8;
+}
+
+.tip-list li::before {
+  content: "0" counter(tips);
+  color: var(--gold);
+  font-family: Cinzel, serif;
+  font-size: 12px;
+  border-bottom: 1px solid var(--gold);
+  flex: 0 0 23px;
+}
+
+/* PROFILE */
+
+.profile-box {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 22px;
+  align-items: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle, #504122, #15150f 70%);
+  border: 1px solid var(--gold);
+  font-size: 38px;
+}
+
+.profile-box h3 {
+  font-family: Cinzel, Georgia, serif;
+  color: var(--gold-light);
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.profile-box p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.profile-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 12px;
+  color: var(--gold);
+  font-size: 10px;
+}
+
+/* SEARCH */
+
+.search-status {
+  display: none;
+  padding: 12px 6%;
+  color: var(--gold-light);
+  font-size: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.search-status.visible { display: block; }
+
+[hidden] { display: none !important; }
+
+/* FOOTER */
+
+.footer {
+  padding: 28px 6%;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-family: Cinzel, Georgia, serif;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.footer-brand span { color: var(--gold); }
+
+.footer p {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+  background: var(--gold);
+  color: #11120f;
+  padding: 12px 20px;
+  max-width: 90%;
+  font-size: 12px;
+  font-weight: 700;
+  transition: .25s;
+  box-shadow: 0 8px 30px #0008;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1100px) {
+  .navbar { padding: 0 4%; }
+  .nav-links { gap: 13px; }
+  .search-box { width: 125px; }
+  .grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .dashboard { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .dashboard .panel:last-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    height: auto;
+    min-height: 70px;
+    padding: 14px 5%;
+    flex-wrap: wrap;
+  }
+
+  .brand { font-size: 19px; }
+  .menu-btn { display: block; }
+
+  .nav-actions { margin-left: auto; }
+  .search-box { width: 135px; }
+
+  .nav-links {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 8px;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    padding: 12px 5px;
+    border-top: 1px solid #ffffff0d;
+  }
+
+  .hero {
+    min-height: 460px;
+    padding: 58px 6%;
+    background-position: center;
+  }
+
+  .hero h1 { font-size: clamp(37px, 10vw, 60px); }
+  .hero p { font-size: 12px; }
+  .eyebrow { letter-spacing: 3px; font-size: 9px; }
+
+  .section { padding: 38px 5%; }
+  .grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .card-image { height: 105px; }
+  .card-body { padding: 13px; }
+  .card p { min-height: 0; }
+
+  .dashboard { grid-template-columns: 1fr; gap: 13px; }
+  .dashboard .panel:last-child { grid-column: auto; }
+  .panel { padding: 18px; }
+
+  .section-head { align-items: start; }
+  .section-head > .btn { display: none; }
+  .profile-box { grid-template-columns: 75px 1fr; gap: 14px; }
+  .avatar { width: 75px; height: 75px; font-size: 28px; }
+
+  .footer { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 360px) {
+  .search-box { width: 105px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <a class="brand" href="#home">
+    FF <span>ARENA</span>
+    <small>THE GOLDEN STANDARD</small>
+  </a>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="#home" class="active">Home</a>
+    <a href="#features">Features</a>
+    <a href="#sensi">Sensi Lab</a>
+    <a href="#updates">Updates</a>
+    <a href="#profile">Profile</a>
+  </nav>
+
+  <div class="nav-actions">
+    <input class="search-box" id="searchInput"
+      type="search" placeholder="Search..." aria-label="Search website">
+    <button class="menu-btn" id="menuBtn"
+      aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<div class="search-status" id="searchStatus" aria-live="polite"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">BATTLE / SURVIVE / BE A LEGEND</div>
+
+      <h1>FREE FIRE <span>GAMING HUB</span></h1>
+
+      <p>
+        Welcome to FF ARENA. Explore sensitivity ideas,
+        gameplay strategies and your own gaming identity.
+        A cleaner experience for players who play with purpose.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#features" class="btn">EXPLORE ARENA ↗</a>
+        <a href="#sensi" class="btn btn-outline">OPEN SENSI LAB</a>
+      </div>
+
+      <div class="hero-note">
+        EST. FOR PLAYERS &nbsp; · &nbsp; BUILT WITH PASSION
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="section-head">
+      <div>
+        <div class="kicker">CURATED FOR GAMERS</div>
+        <h2 class="section-title">THE <span>COLLECTION.</span></h2>
+        <p class="section-sub">Everything you need, in one place.</p>
+      </div>
+      <a href="#sensi" class="btn btn-outline btn-small">ENTER THE LAB ↗</a>
+    </div>
+
+    <div class="grid" id="featureGrid">
+      <article class="card searchable" data-search="sensitivity sensi aim settings">
+        <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="card-body">
+          <div class="card-icon">⌖</div>
+          <h3>SENSITIVITY</h3>
+          <p>Find a starting point for your device and play style.</p>
+          <button class="card-action" data-go="sensi">Open Calculator <span>↗</span></button>
+        </div>
+      </article>
+
+      <article class="card searchable" data-search="characters skills abilities">
+        <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="card-body">
+          <div class="card-icon">♙</div>
+          <h3>CHARACTERS</h3>
+          <p>Explore skill combinations and play-style ideas.</p>
+          <button class="card-action" data-info="Characters guide is ready for your next update.">Explore Guide <span>↗</span></button>
+        </div>
+      </article>
+
+      <article class="card searchable" data-search="tips tricks movement aim gameplay">
+        <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="card-body">
+          <div class="card-icon">✧</div>
+          <h3>TIPS & TRICKS</h3>
+          <p>Improve aim, movement and game awareness.</p>
+          <button class="card-action" data-go="tips">Read Tips <span>↗</span></button>
+        </div>
+      </article>
+
+      <article class="card searchable" data-search="weapons guns loadout combos">
+        <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="card-body">
+          <div class="card-icon">⚔</div>
+          <h3>WEAPONS</h3>
+          <p>Explore loadout concepts and weapon strategies.</p>
+          <button class="card-action" data-info="Weapon guides can be added to this section next.">View Arsenal <span>↗</span></button>
+        </div>
+      </article>
+
+      <article class="card searchable" data-search="player profile gamer name identity">
+        <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="card-body">
+          <div class="card-icon">♙</div>
+          <h3>PLAYER PROFILE</h3>
+          <p>Create a personal gaming identity for your journey.</p>
+          <button class="card-action" data-go="profile">Create Profile <span>↗</span></button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="section dashboard">
+    <!-- SENSITIVITY CALCULATOR -->
+    <div class="panel" id="sensi">
+      <div class="panel-head">
+        <div class="panel-symbol">⌖</div>
+        <div>
+          <h3>SENSITIVITY LAB</h3>
+          <p>Build your starting configuration.</p>
+        </div>
+      </div>
+
+      <form id="sensiForm">
+        <div class="field">
+          <label for="device">Your Device</label>
+          <select id="device">
+            <option value="mobile">Mobile</option>
+            <option value="pc">PC Emulator</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="style">Play Style</label>
+          <select id="style">
+            <option value="balanced">Balanced</option>
+            <option value="drag">Drag Headshot</option>
+            <option value="steady">Steady Aim</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="range">Sensitivity Scale</label>
+          <select id="range">
+            <option value="200">0–200</option>
+            <option value="100">0–100</option>
+          </select>
+        </div>
+
+        <button class="btn full" type="submit">GENERATE SETTINGS ↗</button>
+      </form>
+
+      <div class="result" id="sensiResult" aria-live="polite">
+        <h4>Your Starting Settings</h4>
+        <div id="settingsList"></div>
+        <p class="result-note">
+          Demo recommendations only. Actual sensitivity varies by
+          game version, device, mouse DPI and personal preference.
+        </p>
+        <button class="btn btn-outline full" id="copySettings" type="button">
+          COPY SETTINGS
+        </button>
+      </div>
+    </div>
+
+    <!-- UPDATES -->
+    <div class="panel" id="updates">
+      <div class="panel-head">
+        <div class="panel-symbol">♧</div>
+        <div>
+          <h3>FIELD NOTES</h3>
+          <p>Updates and things worth exploring.</p>
+        </div>
+      </div>
+
+      <div class="updates">
+        <article class="update-item searchable" data-search="training practice aim">
+          <div class="update-number">01</div>
+          <div>
+            <h4>Build Your Aim Routine</h4>
+            <p>Train consistently and track your progress.</p>
+          </div>
+        </article>
+
+        <article class="update-item searchable" data-search="settings sensitivity control">
+          <div class="update-number">02</div>
+          <div>
+            <h4>Refine Your Settings</h4>
+            <p>Change one setting at a time and test the results.</p>
+          </div>
+        </article>
+
+        <article class="update-item searchable" data-search="movement gameplay strategy">
+          <div class="update-number">03</div>
+          <div>
+            <h4>Master Your Movement</h4>
+            <p>Practice positioning and movement under pressure.</p>
+          </div>
+        </article>
+
+        <article class="update-item searchable" data-search="profile identity player">
+          <div class="update-number">04</div>
+          <div>
+            <h4>Define Your Identity</h4>
+            <p>Make the arena your own with a personal profile.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- TIPS -->
+    <div class="panel" id="tips">
+      <div class="panel-head">
+        <div class="panel-symbol">✧</div>
+        <div>
+          <h3>THE CODE</h3>
+          <p>Small habits. Better gameplay.</p>
+        </div>
+      </div>
+
+      <ol class="tip-list">
+        <li>Practice your aim before competitive matches.</li>
+        <li>Adjust one setting at a time.</li>
+        <li>Learn movement and positioning.</li>
+        <li>Study your mistakes after each match.</li>
+        <li>Keep your settings comfortable and consistent.</li>
+      </ol>
+
+      <button class="btn btn-outline full" id="tipButton" type="button">
+        GET A RANDOM TIP ↗
+      </button>
+    </div>
+  </section>
+
+  <!-- PLAYER PROFILE -->
+  <section class="section" id="profile">
+    <div class="section-head">
+      <div>
+        <div class="kicker">YOUR OWN LEGACY</div>
+        <h2 class="section-title">PLAYER <span>IDENTITY.</span></h2>
+        <p class="section-sub">Create a local profile for this browser.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="profile-box">
+        <div class="avatar" id="avatar">♙</div>
+        <div>
+          <div class="kicker">ARENA MEMBER</div>
+          <h3 id="profileName">Unknown Player</h3>
+          <p id="profileDescription">Your journey begins here.</p>
+          <div class="profile-meta">
+            <span>✦ PLAYER</span>
+            <span id="profileStatus">PROFILE NOT SET</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="profileForm" style="margin-top:25px">
+        <div class="field">
+          <label for="playerName">Gaming Name</label>
+          <input id="playerName" maxlength="24" placeholder="Enter your gaming name" required>
+        </div>
+        <div class="field">
+          <label for="playerBio">Short Bio</label>
+          <input id="playerBio" maxlength="90" placeholder="Play smart. Stay legendary.">
+        </div>
+        <button class="btn" type="submit">SAVE PROFILE ↗</button>
+        <button class="btn btn-outline" id="resetProfile" type="button">RESET</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <a href="#home" class="footer-brand">FF <span>ARENA</span></a>
+  <p>PLAY WITH PURPOSE · IMPROVE WITH PATIENCE</p>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#features">Explore</a>
+    <a href="#profile">Profile</a>
+  </div>
+  <p>Fan-made project. Not affiliated with Garena.</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+// ---------- SMALL HELPERS ----------
+
+const $ = (selector) => document.querySelector(selector);
+
+let toastTimer;
+
+function notify(message) {
+  const toast = $("#toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2600);
+}
+
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+
+  if (section) {
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+}
+
+// ---------- NAVIGATION ----------
+
+$("#menuBtn").addEventListener("click", () => {
+  const nav = $("#navLinks");
+  const isOpen = nav.classList.toggle("open");
+
+  $("#menuBtn").setAttribute("aria-expanded", String(isOpen));
+  $("#menuBtn").textContent = isOpen ? "✕" : "☰";
+});
+
+$("#navLinks").addEventListener("click", (event) => {
+  if (event.target.closest("a")) {
+    $("#navLinks").classList.remove("open");
+    $("#menuBtn").setAttribute("aria-expanded", "false");
+    $("#menuBtn").textContent = "☰";
+  }
+});
+
+// Highlight the current section in navigation.
+const navLinks = [...document.querySelectorAll(".nav-links a")];
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (!visible) return;
+
+    navLinks.forEach(link => {
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === "#" + visible.target.id
+      );
+    });
+  }, {
+    rootMargin: "-20% 0px -60% 0px",
+    threshold: [0, 0.1, 0.3]
+  });
+
+  navLinks.forEach(link => {
+    const section = document.querySelector(link.getAttribute("href"));
+    if (section) observer.observe(section);
+  });
+}
+
+// ---------- FEATURE BUTTONS ----------
+
+document.querySelectorAll("[data-go]").forEach(button => {
+  button.addEventListener("click", () => {
+    scrollToSection(button.dataset.go);
+  });
+});
+
+document.querySelectorAll("[data-info]").forEach(button => {
+  button.addEventListener("click", () => {
+    notify(button.dataset.info);
+  });
+});
+
+// ---------- LIVE SEARCH ----------
+
+$("#searchInput").addEventListener("input", (event) => {
+  const query = event.target.value.trim().toLowerCase();
+  const items = [...document.querySelectorAll(".searchable")];
+  let matches = 0;
+
+  items.forEach(item => {
+    const text = (
+      item.innerText + " " + (item.dataset.search || "")
+    ).toLowerCase();
+
+    const match = !query || text.includes(query);
+
+    item.hidden = !match;
+
+    if (match) matches++;
+  });
+
+  const status = $("#searchStatus");
+
+  if (query) {
+    status.classList.add("visible");
+    status.textContent = matches
+      ? matches + " matching item(s) found."
+      : "No matching items. Try another search.";
+  } else {
+    status.classList.remove("visible");
+    status.textContent = "";
+  }
+});
+
+// ---------- SENSITIVITY CALCULATOR ----------
+
+const settingNames = [
+  "General",
+  "Red Dot",
+  "2x Scope",
+  "4x Scope",
+  "Sniper Scope",
+  "Free Look"
+];
+
+let currentSettings = null;
+
+function makeSettings(device, style, max) {
+  const presets = {
+    mobile: {
+      balanced: [170, 160, 145, 125, 85, 120],
+      drag:     [190, 185, 175, 160, 100, 150],
+      steady:   [145, 130, 115, 95, 65, 100]
+    },
+    pc: {
+      balanced: [160, 145, 130, 110, 75, 100],
+      drag:     [180, 170, 155, 135, 90, 120],
+      steady:   [135, 120, 105, 90, 60, 90]
+    }
+  };
+
+  const values = presets[device][style];
+
+  return settingNames.map((name, index) => ({
+    name,
+    value: Math.round(values[index] * max / 200)
+  }));
+}
+
+$("#sensiForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const device = $("#device").value;
+  const style = $("#style").value;
+  const max = Number($("#range").value);
+
+  currentSettings = makeSettings(device, style, max);
+
+  const list = $("#settingsList");
+  list.replaceChildren();
+
+  currentSettings.forEach(setting => {
+    const row = document.createElement("div");
+    row.className = "setting-row";
+
+    const label = document.createElement("span");
+    label.textContent = setting.name;
+
+    const value = document.createElement("strong");
+    value.textContent = setting.value;
+
+    row.append(label, value);
+    list.appendChild(row);
+  });
+
+  $("#sensiResult").classList.add("visible");
+  notify("Your starting settings are ready.");
+});
+
+$("#copySettings").addEventListener("click", async () => {
+  if (!currentSettings) {
+    notify("Generate your settings first.");
+    return;
+  }
+
+  const text = [
+    "FF ARENA - Sensitivity Settings",
+    ...currentSettings.map(s => s.name + ": " + s.value)
+  ].join("\n");
+
+  try {
+    await navigator.clipboard.writeText(text);
+    notify("Settings copied successfully.");
+  } catch {
+    // Fallback for browsers that block clipboard access.
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    let copied = false;
+
+    try {
+      copied = document.execCommand("copy");
+    } catch {
+      copied = false;
+    }
+
+    textarea.remove();
+
+    if (copied) {
+      notify("Settings copied successfully.");
+    } else {
+      window.prompt("Copy your settings:", text);
+    }
+  }
+});
+
+// ---------- RANDOM GAMEPLAY TIP ----------
+
+const tips = [
+  "Practice drag movement slowly before increasing speed.",
+  "Test one sensitivity change at a time.",
+  "Use the training area to understand your aim control.",
+  "Review missed shots instead of changing every setting.",
+  "Keep your controls comfortable and consistent.",
+  "Learn to reposition rather than taking every fight."
+];
+
+$("#tipButton").addEventListener("click", () => {
+  const tip = tips[Math.floor(Math.random() * tips.length)];
+  notify(tip);
+});
+
+// ---------- PLAYER PROFILE ----------
+
+// Profile is stored only in this browser, if local storage is available.
+const profileStorageKey = "ffArenaClassyProfile";
+
+function displayProfile(profile) {
+  $("#profileName").textContent = profile.name;
+  $("#profileDescription").textContent =
+    profile.bio || "Play smart. Stay legendary.";
+
+  $("#avatar").textContent =
+    [...profile.name][0]?.toUpperCase() || "♙";
+
+  $("#profileStatus").textContent = "PROFILE SAVED";
+  $("#playerName").value = profile.name;
+  $("#playerBio").value = profile.bio || "";
+}
+
+function loadProfile() {
+  try {
+    const raw = localStorage.getItem(profileStorageKey);
+    if (!raw) return;
+
+    const profile = JSON.parse(raw);
+
+    if (profile && typeof profile.name === "string") {
+      displayProfile({
+        name: profile.name.slice(0, 24),
+        bio: typeof profile.bio === "string"
+          ? profile.bio.slice(0, 90)
+          : ""
+      });
+    }
+  } catch {
+    // The website still works when storage is unavailable.
+  }
+}
+
+$("#profileForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = $("#playerName").value.trim();
+  const bio = $("#playerBio").value.trim();
+
+  if (!name) {
+    notify("Please enter your gaming name.");
+    return;
+  }
+
+  const profile = { name, bio };
+
+  displayProfile(profile);
+
+  try {
+    localStorage.setItem(profileStorageKey, JSON.stringify(profile));
+    notify("Your profile has been saved in this browser.");
+  } catch {
+    notify("Profile updated for this session.");
+  }
+});
+
+$("#resetProfile").addEventListener("click", () => {
+  try {
+    localStorage.removeItem(profileStorageKey);
+  } catch {
+    // Continue resetting the visible form.
+  }
+
+  $("#playerName").value = "";
+  $("#playerBio").value = "";
+  $("#profileName").textContent = "Unknown Player";
+  $("#profileDescription").textContent = "Your journey begins here.";
+  $("#avatar").textContent = "♙";
+  $("#profileStatus").textContent = "PROFILE NOT SET";
+
+  notify("Profile reset.");
+});
+
+// Initialize profile if one exists.
+loadProfile();
+</script>
+
+</body>
+</html>
